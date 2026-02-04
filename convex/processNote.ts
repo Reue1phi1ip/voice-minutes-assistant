@@ -117,11 +117,11 @@ if (minutesParsed.needsMoreAudio) {
   );
 
   await ctx.runMutation(internal.internal.saveResults, {
-    id: args.id,
-    transcript: transcriptText,
-    summary: minutesParsed,
-    spokenAudioStorageId,
-  });
+  id: args.id,
+  transcript: transcriptText,
+  summary: minutesParsed, // must include confidence + needsMoreAudio
+  spokenAudioStorageId,
+});
 
   return { ok: true, lowConfidence: true };
 }
